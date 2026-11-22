@@ -1,0 +1,16 @@
+{
+  "name": "demo-reel",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "demo-reel demo-video flows for this project",
+  "scripts": {
+    "check": "node scripts/check-env.mjs",
+    "new": "node scripts/new-flow.mjs",
+    "validate": "node scripts/validate.mjs --all",
+    "record": "node scripts/record.mjs"
+  },
+  "dependencies": {
+    "playwright": "^1.65.1"
+  }
+}

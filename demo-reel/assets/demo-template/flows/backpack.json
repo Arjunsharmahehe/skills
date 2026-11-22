@@ -1,0 +1,171 @@
+{
+  "baseUrl": "https://www.saucedemo.com",
+  "name": "backpack",
+  "steps": [
+    {
+      "actions": [
+        {
+          "do": "goto",
+          "expect": "#login-button",
+          "path": "/"
+        },
+        {
+          "do": "type",
+          "selector": "#user-name",
+          "text": "standard_user"
+        },
+        {
+          "do": "type",
+          "selector": "#password",
+          "text": "secret_sauce"
+        },
+        {
+          "do": "click",
+          "selector": "#login-button"
+        },
+        {
+          "do": "assert",
+          "urlIncludes": "inventory.html"
+        },
+        {
+          "do": "assert",
+          "visible": ".inventory_item"
+        }
+      ],
+      "caption": "Logging in to Swag Labs",
+      "chapter": "logged in",
+      "id": "login"
+    },
+    {
+      "actions": [
+        {
+          "do": "scrollTo",
+          "selector": "#add-to-cart-sauce-labs-backpack"
+        },
+        {
+          "do": "click",
+          "selector": "#add-to-cart-sauce-labs-backpack"
+        },
+        {
+          "do": "assert",
+          "textIncludes": "Remove"
+        },
+        {
+          "do": "wait",
+          "ms": 700
+        }
+      ],
+      "caption": "Adding the Sauce Labs Backpack to the cart",
+      "chapter": "backpack in the cart",
+      "id": "add"
+    },
+    {
+      "actions": [
+        {
+          "do": "click",
+          "selector": ".shopping_cart_link"
+        },
+        {
+          "do": "assert",
+          "urlIncludes": "cart.html"
+        },
+        {
+          "do": "assert",
+          "textIncludes": "Sauce Labs Backpack"
+        },
+        {
+          "do": "wait",
+          "ms": 700
+        }
+      ],
+      "caption": "Reviewing the cart",
+      "chapter": "cart review",
+      "id": "cart"
+    },
+    {
+      "actions": [
+        {
+          "do": "click",
+          "selector": "#checkout"
+        },
+        {
+          "do": "assert",
+          "urlIncludes": "checkout-step-one.html"
+        },
+        {
+          "do": "fill",
+          "selector": "#first-name",
+          "text": "Jane"
+        },
+        {
+          "do": "fill",
+          "selector": "#last-name",
+          "text": "Doe"
+        },
+        {
+          "do": "fill",
+          "selector": "#postal-code",
+          "text": "90210"
+        },
+        {
+          "do": "click",
+          "selector": "#continue"
+        },
+        {
+          "do": "assert",
+          "urlIncludes": "checkout-step-two"
+        }
+      ],
+      "caption": "Checking out with buyer details",
+      "chapter": "buyer details entered",
+      "id": "details"
+    },
+    {
+      "actions": [
+        {
+          "do": "assert",
+          "textIncludes": "Sauce Labs Backpack"
+        },
+        {
+          "do": "scrollTo",
+          "selector": ".summary_total_label"
+        },
+        {
+          "do": "wait",
+          "ms": 900
+        }
+      ],
+      "caption": "Reviewing the order total",
+      "chapter": "order review",
+      "id": "overview"
+    },
+    {
+      "actions": [
+        {
+          "do": "scrollTo",
+          "selector": "#finish"
+        },
+        {
+          "do": "click",
+          "selector": "#finish"
+        },
+        {
+          "do": "assert",
+          "textIncludes": "Thank you for your order!"
+        },
+        {
+          "do": "wait",
+          "ms": 1500
+        }
+      ],
+      "caption": "Placing the order",
+      "chapter": "order confirmed",
+      "id": "done",
+      "creates": true
+    }
+  ],
+  "subtitle": "Swag Labs · recorded proof",
+  "task": "login as standard_user → add Sauce Labs Backpack → checkout (Jane Doe, 90210) → order confirmation",
+  "title": "Buying a backpack on SauceDemo",
+  "zoom": 90
+}

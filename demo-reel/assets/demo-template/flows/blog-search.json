@@ -1,0 +1,134 @@
+{
+  "name": "blog-search",
+  "title": "Searching the blog",
+  "subtitle": "blogs.arjunn.dev · recorded proof",
+  "task": "home → /blog → search \"UUID\" → open post → read scroll",
+  "baseUrl": "https://blogs.arjunn.dev",
+  "zoom": 90,
+  "steps": [
+    {
+      "id": "home",
+      "chapter": "open home",
+      "caption": "blogs.arjunn.dev — home",
+      "actions": [
+        {
+          "do": "goto",
+          "path": "/",
+          "expect": "main"
+        },
+        {
+          "do": "wait",
+          "ms": 600
+        }
+      ]
+    },
+    {
+      "id": "latest",
+      "chapter": "scroll latest",
+      "caption": "Latest posts + recipes",
+      "actions": [
+        {
+          "do": "scrollTo",
+          "selector": "main"
+        },
+        {
+          "do": "wait",
+          "ms": 600
+        }
+      ]
+    },
+    {
+      "id": "open-blog",
+      "chapter": "open /blog",
+      "caption": "Open Blog index",
+      "actions": [
+        {
+          "do": "scroll",
+          "to": "top"
+        },
+        {
+          "do": "click",
+          "selector": "a[href=\"/blog\"]"
+        },
+        {
+          "do": "assert",
+          "urlIncludes": "/blog"
+        },
+        {
+          "do": "wait",
+          "ms": 900
+        }
+      ]
+    },
+    {
+      "id": "search",
+      "chapter": "type UUID",
+      "caption": "Search: typing “UUID”…",
+      "actions": [
+        {
+          "do": "scrollTo",
+          "selector": "#pf-search-input"
+        },
+        {
+          "do": "type",
+          "selector": "#pf-search-input",
+          "text": "UUID"
+        },
+        {
+          "do": "wait",
+          "ms": 900
+        },
+        {
+          "do": "scrollTo",
+          "selector": "#pf-results"
+        },
+        {
+          "do": "wait",
+          "ms": 800
+        }
+      ]
+    },
+    {
+      "id": "open-post",
+      "chapter": "open post",
+      "caption": "Open “Why use UUID…”",
+      "actions": [
+        {
+          "do": "click",
+          "selector": "#pf-results a"
+        },
+        {
+          "do": "assert",
+          "urlIncludes": "/blog/"
+        },
+        {
+          "do": "wait",
+          "ms": 1800
+        }
+      ]
+    },
+    {
+      "id": "read",
+      "chapter": "read article",
+      "caption": "Reading — smooth scroll",
+      "actions": [
+        {
+          "do": "scroll",
+          "to": "35%"
+        },
+        {
+          "do": "wait",
+          "ms": 700
+        },
+        {
+          "do": "scroll",
+          "to": "60%"
+        },
+        {
+          "do": "wait",
+          "ms": 900
+        }
+      ]
+    }
+  ]
+}

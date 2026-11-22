@@ -1,0 +1,238 @@
+{
+  "name": "purchase-order",
+  "title": "Creating a purchase order",
+  "subtitle": "DemoERP · recorded proof",
+  "task": "login → new purchase order (SUP-002 / WH-001 / ITEM-003 x20 @120) → view in list",
+  "baseUrl": "https://demo-erp.fukumean.me",
+  "zoom": 90,
+  "steps": [
+    {
+      "id": "login",
+      "chapter": "logged in",
+      "caption": "Logging in as administrator",
+      "actions": [
+        {
+          "do": "goto",
+          "path": "/login",
+          "expect": "#username"
+        },
+        {
+          "do": "type",
+          "selector": "#username",
+          "text": "administrator"
+        },
+        {
+          "do": "type",
+          "selector": "#password",
+          "text": "admin123"
+        },
+        {
+          "do": "click",
+          "selector": "button[type=submit]"
+        },
+        {
+          "do": "assert",
+          "urlExcludes": "/login"
+        },
+        {
+          "do": "reload"
+        },
+        {
+          "do": "assert",
+          "textIncludes": "Purchase Orders"
+        }
+      ]
+    },
+    {
+      "id": "open-list",
+      "chapter": "open PO list",
+      "caption": "Opening Purchase Orders",
+      "actions": [
+        {
+          "do": "click",
+          "selector": "a[href=\"/buying/purchase-orders\"]"
+        },
+        {
+          "do": "assert",
+          "urlIncludes": "/buying/purchase-orders"
+        },
+        {
+          "do": "reload"
+        },
+        {
+          "do": "assert",
+          "visible": "table"
+        }
+      ],
+      "_why": "App SPA navigation leaves masters unfetched (401s). Click first for the human story on camera, reload for clean state."
+    },
+    {
+      "id": "new-form",
+      "chapter": "open new PO form",
+      "caption": "New purchase order",
+      "actions": [
+        {
+          "do": "click",
+          "selector": "a[href=\"/buying/purchase-order/new\"]"
+        },
+        {
+          "do": "assert",
+          "urlIncludes": "/purchase-order/new"
+        },
+        {
+          "do": "reload"
+        },
+        {
+          "do": "assert",
+          "visible": "#po-supplier"
+        }
+      ],
+      "_why": "App SPA navigation leaves masters unfetched (401s). Click first for the human story on camera, reload for clean state."
+    },
+    {
+      "id": "supplier",
+      "chapter": "pick supplier",
+      "caption": "Supplier: Bearing House (SUP-002)",
+      "needs": [
+        "new-form"
+      ],
+      "actions": [
+        {
+          "do": "scrollTo",
+          "selector": "#po-supplier"
+        },
+        {
+          "do": "pick",
+          "trigger": "#po-supplier",
+          "option": "SUP-002"
+        }
+      ]
+    },
+    {
+      "id": "warehouse",
+      "chapter": "pick warehouse",
+      "caption": "Warehouse: Stores (WH-001)",
+      "needs": [
+        "new-form"
+      ],
+      "actions": [
+        {
+          "do": "pick",
+          "trigger": "#po-warehouse",
+          "option": "WH-001"
+        }
+      ]
+    },
+    {
+      "id": "item",
+      "chapter": "pick item + qty + rate",
+      "caption": "Item: Bearing 6204, qty 20 @ ₹120",
+      "needs": [
+        "supplier",
+        "warehouse"
+      ],
+      "actions": [
+        {
+          "do": "scrollTo",
+          "selector": "table, form"
+        },
+        {
+          "do": "pick",
+          "trigger": "text:Select item",
+          "option": "ITEM-003"
+        },
+        {
+          "do": "fill",
+          "selector": "input[placeholder=\"0\"]",
+          "text": "20"
+        },
+        {
+          "do": "fill",
+          "selector": "input[placeholder=\"0.00\"]",
+          "text": "120"
+        },
+        {
+          "do": "wait",
+          "ms": 700
+        }
+      ]
+    },
+    {
+      "id": "save",
+      "chapter": "saved ${poId}",
+      "caption": "Saving purchase order",
+      "needs": [
+        "item"
+      ],
+      "actions": [
+        {
+          "do": "clickText",
+          "text": "Save",
+          "exact": true
+        },
+        {
+          "do": "assert",
+          "urlIncludes": "/purchase-order/PO-"
+        },
+        {
+          "do": "extract",
+          "as": "poId",
+          "from": "url",
+          "match": "(PO-[\\d-]+)"
+        },
+        {
+          "do": "wait",
+          "ms": 1400
+        },
+        {
+          "do": "caption",
+          "text": "Saved ${poId} as Draft"
+        },
+        {
+          "do": "scroll",
+          "to": "top"
+        },
+        {
+          "do": "wait",
+          "ms": 900
+        }
+      ],
+      "creates": true
+    },
+    {
+      "id": "verify-list",
+      "chapter": "verified in list",
+      "caption": "Verifying in the list view",
+      "actions": [
+        {
+          "do": "click",
+          "selector": "a[href=\"/buying/purchase-orders\"]"
+        },
+        {
+          "do": "assert",
+          "urlIncludes": "/buying/purchase-orders"
+        },
+        {
+          "do": "reload"
+        },
+        {
+          "do": "scrollTo",
+          "selector": "table"
+        },
+        {
+          "do": "assert",
+          "textIncludes": "${poId}"
+        },
+        {
+          "do": "caption",
+          "text": "${poId} · top of the list"
+        },
+        {
+          "do": "wait",
+          "ms": 1600
+        }
+      ],
+      "_why": "App SPA navigation leaves masters unfetched (401s). Click first for the human story on camera, reload for clean state."
+    }
+  ]
+}
