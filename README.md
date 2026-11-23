@@ -22,5 +22,3 @@ Each skill lives in its own folder with a `SKILL.md` (frontmatter `name` + `desc
 ## License
 
 MIT — see [LICENSE](./LICENSE).
-
-> Canonical source for these skills. (An older `skill/` folder inside the `tape` dev repo is archived history — edit here.)
