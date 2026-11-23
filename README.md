@@ -13,6 +13,7 @@ npx skills add arjunsharmahehe/skills --skill <skill-name>
 | Skill | What it does | Install |
 |---|---|---|
 | [demo-reel](./demo-reel) | Record client-ready demo videos of web features: the agent drives a real browser with human-like motion, narrates with burned-in captions, and hands back a shareable `proof.mp4`. Chapter-level retakes, error reports with partial footage, no re-recording from scratch. | `npx skills add arjunsharmahehe/skills --skill demo-reel` |
+| [android-reel](./android-reel) | Record client-ready demo videos of Android apps: the agent drives a real emulator/device over ADB with an amber finger that glides between taps, narrates with burned-in captions, and hands back a shareable `proof.mp4`. Text/checkbox selectors resolve live, asserts prove every screen. | `npx skills add arjunsharmahehe/skills --skill android-reel` |
 
 ## Adding a skill here
 
