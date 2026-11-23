@@ -1,0 +1,189 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "android-reel flow",
+  "type": "object",
+  "required": [
+    "package",
+    "steps"
+  ],
+  "properties": {
+    "package": {
+      "type": "string",
+      "description": "Entry-only launch target (force-stop + monkey LAUNCHER)"
+    },
+    "title": {
+      "type": "string",
+      "description": "Default $title substitution"
+    },
+    "meta": {
+      "type": "object",
+      "description": "Title-card + proof.md copy (post.mjs reads this \u2014 no hardcoded flow names)",
+      "properties": {
+        "cardTitle": {
+          "type": "string",
+          "description": "Title card headline; | splits into two lines"
+        },
+        "cardSubtitle": {
+          "type": "string"
+        },
+        "proofTitle": {
+          "type": "string",
+          "description": "proof.md heading"
+        },
+        "eyebrow": {
+          "type": "string"
+        }
+      }
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "oneOf": [
+          {
+            "required": [
+              "chapter"
+            ],
+            "properties": {
+              "chapter": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "required": [
+              "tap"
+            ],
+            "properties": {
+              "tap": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "minItems": 2,
+                "maxItems": 2
+              },
+              "label": {
+                "type": "string"
+              },
+              "settle": {
+                "type": "number"
+              }
+            }
+          },
+          {
+            "required": [
+              "tapText"
+            ],
+            "properties": {
+              "tapText": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "settle": {
+                "type": "number"
+              }
+            }
+          },
+          {
+            "required": [
+              "tapCheckboxFor"
+            ],
+            "properties": {
+              "tapCheckboxFor": {
+                "type": "string"
+              },
+              "settle": {
+                "type": "number"
+              }
+            }
+          },
+          {
+            "required": [
+              "type"
+            ],
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "clearDels": {
+                "type": "number"
+              },
+              "settle": {
+                "type": "number"
+              }
+            }
+          },
+          {
+            "required": [
+              "key"
+            ],
+            "properties": {
+              "key": {
+                "type": "number"
+              },
+              "label": {
+                "type": "string"
+              },
+              "settle": {
+                "type": "number"
+              }
+            }
+          },
+          {
+            "required": [
+              "swipe"
+            ],
+            "properties": {
+              "swipe": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              },
+              "settle": {
+                "type": "number"
+              }
+            }
+          },
+          {
+            "required": [
+              "sleep"
+            ],
+            "properties": {
+              "sleep": {
+                "type": "number"
+              }
+            }
+          },
+          {
+            "required": [
+              "assertVisible"
+            ],
+            "properties": {
+              "assertVisible": {
+                "type": [
+                  "string",
+                  "object"
+                ],
+                "description": "string, or {text, reveal: swipe-up retries}"
+              }
+            }
+          },
+          {
+            "required": [
+              "assertHidden"
+            ],
+            "properties": {
+              "assertHidden": {
+                "type": "string"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

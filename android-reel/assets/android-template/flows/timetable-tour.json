@@ -1,0 +1,86 @@
+{
+  "package": "com.example.campusplanner",
+  "title": "exam week timetable tour",
+  "meta": {
+    "cardTitle": "Tour the week,|Mon to Wed",
+    "cardSubtitle": "Timetable tab · amber finger follows each tap",
+    "proofTitle": "Campus Planner (Android): Monday timetable tour"
+  },
+  "steps": [
+    {
+      "chapter": "Campus Planner home - todays classes and exams"
+    },
+    {
+      "assertVisible": "Upcoming exams"
+    },
+    {
+      "chapter": "Open the Timetable tab"
+    },
+    {
+      "tapText": "Timetable",
+      "settle": 1500
+    },
+    {
+      "chapter": "Start the week on Monday"
+    },
+    {
+      "tapText": "Mon",
+      "settle": 1200
+    },
+    {
+      "assertVisible": "Monday"
+    },
+    {
+      "assertVisible": "Data Structures"
+    },
+    {
+      "chapter": "Tap Tue for Tuesdays classes"
+    },
+    {
+      "tapText": "Tue",
+      "settle": 1200
+    },
+    {
+      "assertVisible": "Tuesday"
+    },
+    {
+      "assertVisible": "Databases"
+    },
+    {
+      "chapter": "Tap Wed for Wednesdays lineup"
+    },
+    {
+      "tapText": "Wed",
+      "settle": 1200
+    },
+    {
+      "swipe": [
+        540,
+        1400,
+        540,
+        800,
+        400
+      ],
+      "settle": 1200
+    },
+    {
+      "assertVisible": "Wednesday"
+    },
+    {
+      "assertHidden": "Databases"
+    },
+    {
+      "chapter": "Back Home - todays overview"
+    },
+    {
+      "tapText": "Home",
+      "settle": 1500
+    },
+    {
+      "assertVisible": "Upcoming exams"
+    },
+    {
+      "assertVisible": "Good morning"
+    }
+  ]
+}

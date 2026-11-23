@@ -1,0 +1,127 @@
+{
+  "package": "com.example.campusplanner",
+  "title": "Revise thermo ch8",
+  "steps": [
+    {
+      "chapter": "Campus Planner home - classes today, upcoming exams"
+    },
+    {
+      "tap": [
+        127,
+        2232
+      ],
+      "label": "Home",
+      "settle": 1200
+    },
+    {
+      "chapter": "Open the Tasks tab"
+    },
+    {
+      "tap": [
+        676,
+        2232
+      ],
+      "label": "Tasks",
+      "settle": 1500
+    },
+    {
+      "chapter": "Tap + to create a new assignment"
+    },
+    {
+      "tap": [
+        964,
+        2011
+      ],
+      "label": "Add task",
+      "settle": 1500
+    },
+    {
+      "chapter": "Enter the title"
+    },
+    {
+      "tap": [
+        540,
+        942
+      ],
+      "label": "Title field",
+      "settle": 900
+    },
+    {
+      "type": "$title",
+      "clearDels": 25,
+      "settle": 1000
+    },
+    {
+      "key": 4,
+      "label": "hide keyboard",
+      "settle": 1000
+    },
+    {
+      "chapter": "Set priority to High"
+    },
+    {
+      "tap": [
+        593,
+        1416
+      ],
+      "label": "High",
+      "settle": 800
+    },
+    {
+      "chapter": "Save the assignment"
+    },
+    {
+      "tap": [
+        780,
+        1773
+      ],
+      "label": "Create",
+      "settle": 2000
+    },
+    {
+      "chapter": "Tick it off - mark the task done"
+    },
+    {
+      "tapCheckboxFor": {
+        "text": "$title",
+        "reveal": 3
+      },
+      "settle": 1500
+    },
+    {
+      "chapter": "Done filter - the finished task is here"
+    },
+    {
+      "swipe": [
+        540,
+        700,
+        540,
+        1700,
+        400
+      ],
+      "settle": 1200
+    },
+    {
+      "tap": [
+        663,
+        380
+      ],
+      "label": "Done filter",
+      "settle": 2000
+    },
+    {
+      "assertVisible": {
+        "text": "$title",
+        "reveal": 3
+      }
+    },
+    {
+      "assertHidden": "Lab report 4 (overdue)"
+    }
+  ],
+  "meta": {
+    "cardTitle": "Create a task,|tick it done",
+    "cardSubtitle": "Tasks tab · amber finger follows each tap",
+    "proofTitle": "Campus Planner (Android): create a task, mark it done"
+  }
+}
